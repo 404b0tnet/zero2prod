@@ -6,6 +6,20 @@ edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+
+[lib]
+path = "src/lib.rs"
+
+
+# Notice the double square brackets: it's an array in TOML's syntax.
+# We can only have one library in a project, but we can have multiple binaries!
+# If you want to manage multiple libraries in the same repository
+# have a look at the workspace feature - we'll cover it later on.
+[[bin]]
+path = "src/main.rs"
+name = "zero2prod"
+
+
 [dependencies]
 #Latest beta release of actix-web
 #That relies on tokio 1.x.x
@@ -14,3 +28,8 @@ edition = "2018"
 # compatibility
 actix-web = "=4.0.0-beta.8"
 actix-http = "=3.0.0-beta.8"
+
+
+[dev-dependencies]
+actix-rt = '2'
+reqwest = "0.11"
